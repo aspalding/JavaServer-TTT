@@ -1,7 +1,9 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
+import Responses.CobRouter;
 import Responses.Persistence.Logs;
+import Responses.Cob.LogsRoute;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +11,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LogsRouteTest {
+
     Request authorizedRequest, invalidRequest, unauthorizedRequest, notAllowedRequest;
     LogsRoute authorizedRoute, invalidRoute, unauthorizedRoute, notAllowedRoute;
 
@@ -69,7 +72,7 @@ public class LogsRouteTest {
 
     @Test
     public void testGenerateBody() throws Exception {
-        Router.route(unauthorizedRequest);
+        new CobRouter().route(unauthorizedRequest);
         assert authorizedRoute.generateBody().length > 0;
     }
 
@@ -82,4 +85,5 @@ public class LogsRouteTest {
     public void testIsValidUser() throws Exception{
         assert authorizedRoute.isValidUser("admin:hunter2");
     }
+
 }

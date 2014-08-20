@@ -6,7 +6,7 @@ describe Web do
   let(:w) {Web.new(b)}
 
   it "returns a pretty board" do
-    pretty_board = "\n- | - | -\n- | - | -\n- | - | -\n\n" 
+    pretty_board = "</br>- | - | -</br>- | - | -</br>- | - | -</br></br>" 
     w.show_board.should eq(pretty_board)
   end
   

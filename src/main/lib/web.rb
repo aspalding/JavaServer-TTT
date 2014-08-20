@@ -6,7 +6,7 @@ class Web
   end
 
   def show_board
-      "\n%s | %s | %s\n%s | %s | %s\n%s | %s | %s\n\n" % @board.board
+      "</br>%s | %s | %s</br>%s | %s | %s</br>%s | %s | %s</br></br>" % @board.board
   end
 
   def human_move(mark, loc)

@@ -1,13 +1,12 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
+import Responses.Cob.ParameterRoute;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class ParameterRouteTest {

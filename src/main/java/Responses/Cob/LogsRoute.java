@@ -1,7 +1,9 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
 import Responses.Persistence.Logs;
+import Responses.Response;
+import Responses.Route;
 
 import java.util.Base64;
 import java.util.HashMap;

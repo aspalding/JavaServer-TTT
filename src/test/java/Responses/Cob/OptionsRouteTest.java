@@ -1,10 +1,9 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
+import Responses.Cob.OptionsRoute;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class OptionsRouteTest {
     Request request;

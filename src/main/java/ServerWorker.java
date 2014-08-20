@@ -30,7 +30,8 @@ public class ServerWorker implements Runnable {
                 if(clientRequest == null)
                     connection.close();
                 else {
-                    Response response = Router.route(clientRequest);
+                    Response response = new TicTacToeRouter().route(clientRequest);
+                    //Response response = new CobRouter().route(clientRequest);
 
                     SocketIO.writeResponse(
                             response.statusAndHeadersToString(),
@@ -38,8 +39,8 @@ public class ServerWorker implements Runnable {
                             connection.getOutputStream()
                     );
 
-                    //reqRespLog.log(Level.INFO, request);
-                    //reqRespLog.log(Level.INFO, response.toString());
+                    reqRespLog.log(Level.INFO, request);
+                    reqRespLog.log(Level.INFO, response.toString());
 
 
                     connection.close();

@@ -1,8 +1,12 @@
+import Responses.Persistence.Games;
+import Responses.Persistence.TicTacToe;
+
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.jruby.embed.*;
 
 public class Application{
     public static void main (String cat[]) throws Exception{
@@ -10,6 +14,7 @@ public class Application{
     }
 
     public static void runLoop(String[] cat) throws Exception{
+        initializeGames();
         ArgsParser.parseArguments(Arrays.asList(cat));
 
         System.setProperty("user.dir", ArgsParser.root);
@@ -20,5 +25,9 @@ public class Application{
         while(!s.isClosed()){
             exe.submit(new ServerWorker(s.accept()));
         }
+    }
+
+    public static void initializeGames(){
+        Games.games.add(new TicTacToe());
     }
 }

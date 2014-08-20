@@ -1,7 +1,9 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
 import Responses.Persistence.PatchFile;
+import Responses.Response;
+import Responses.Route;
 import Responses.Views.FolderView;
 
 import java.io.File;
@@ -67,13 +69,11 @@ public class FileDirectoryRoute implements Route {
     }
 
     public HashMap<String, String> generateHeaders(){
-        HashMap<String, String> headers = new HashMap<String, String>() {
+        return new HashMap<String, String>() {
             {
                 put("Content-Type", contentType);
             }
         };
-
-        return headers;
     }
 
     public byte[] generateBody() {

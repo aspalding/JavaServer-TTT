@@ -1,6 +1,8 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
+import Responses.Response;
+import Responses.Route;
 
 import java.net.URLDecoder;
 import java.util.ArrayList;

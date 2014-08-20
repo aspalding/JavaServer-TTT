@@ -1,7 +1,8 @@
-package Responses;
+package Responses.Cob;
 
 import Requests.Request;
 import Responses.Persistence.Form;
+import Responses.Response;
 
 import java.util.HashMap;
 
