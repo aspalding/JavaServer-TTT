@@ -34,6 +34,7 @@ public class GameRoute implements Route {
     public String generateBody(){
         if(request.method.equals("POST")){
             Games.games.get(0).move(isolateLocation(request.body));
+            Games.games.get(0).aiMove();
         }
 
         String content = Games.games.get(0).board() + "<form action=\"/game\" method=\"post\">" +

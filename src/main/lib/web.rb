@@ -1,7 +1,12 @@
 require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/board.rb'
+require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/ai.rb'
+require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/state.rb'
+
 
 class Web
   def initialize(board)
+    @manager = Player_manager.new("x", false, "o", true)
+    @ai = Ai.new("o", @manager)
     @board = board
   end
 
@@ -10,8 +15,12 @@ class Web
   end
 
   def human_move(mark, loc)
-    puts "Enter a valid move (0..8)"
     @board.place(mark, cast_int(loc))
+  end
+  
+  def ai_move(mark)
+    loc = @ai.smart_move(@board.board)
+    @board.place(mark, loc)
   end
 
   def cast_int(loc)

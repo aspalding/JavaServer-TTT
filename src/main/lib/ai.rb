@@ -1,5 +1,8 @@
-require 'state'
-require 'player_manager'
+#require 'player_manager'
+#require 'state'
+require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/state.rb'
+require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/player_manager.rb'
+
 
 class Ai
   attr_reader :mark, :choice

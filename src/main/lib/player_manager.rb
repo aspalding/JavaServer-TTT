@@ -1,4 +1,4 @@
-require 'ai'
+require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/ai.rb'
 
 class Player_manager
   attr_reader :first, :second

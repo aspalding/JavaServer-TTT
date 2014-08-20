@@ -28,4 +28,8 @@ public class TicTacToe {
     public void move(String location) {
         container.callMethod(object, "human_move", "x", location);
     }
+
+    public void aiMove() {
+        container.callMethod(object, "ai_move", "o", void.class);
+    }
 }

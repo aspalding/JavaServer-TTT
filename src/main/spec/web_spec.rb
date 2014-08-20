@@ -15,6 +15,11 @@ describe Web do
     b.board[0].should eq("x") 
   end
   
+  it "puts an ai move on the board" do
+    w.ai_move("o")
+    (b.board.include? "o").should eq(true)
+  end
+  
   it "returns an invalid move if move cannot be cast" do 
     w.cast_int("a").should eq(-1)
   end
