@@ -1,5 +1,6 @@
 package Responses.Persistence;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jruby.embed.PathType;
 import org.jruby.embed.ScriptingContainer;
 
@@ -31,5 +32,13 @@ public class TicTacToe {
 
     public void aiMove() {
         container.callMethod(object, "ai_move", "o", void.class);
+    }
+
+    public boolean isGameOver() {
+        return container.callMethod(object, "game_over?", Boolean.class);
+    }
+
+    public String overMessage(){
+        return container.callMethod(object, "over_message", String.class);
     }
 }

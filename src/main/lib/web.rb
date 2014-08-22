@@ -8,10 +8,11 @@ class Web
     @manager = Player_manager.new("x", false, "o", true)
     @ai = Ai.new("o", @manager)
     @board = board
+    @state = State.new(@manager)
   end
 
   def show_board
-      "</br>%s | %s | %s</br>%s | %s | %s</br>%s | %s | %s</br></br>" % @board.board
+      "<h1></br>%s | %s | %s</br>%s | %s | %s</br>%s | %s | %s</br></br></h1>" % @board.board
   end
 
   def human_move(mark, loc)
@@ -30,6 +31,21 @@ class Web
       loc = -1
     end
   end
+
+  def game_over?
+    @state.terminal?(@board.board)
+  end
+
+  def over_message
+    if @state.winner?(@board.board, "x")
+      "x is the winner!"
+    elsif @state.winner?(@board.board, "o")
+      "o is the winner!"
+    else
+      "It's a tie!"
+    end
+  end
+
 end
 
 Web.new(Board.new(3))

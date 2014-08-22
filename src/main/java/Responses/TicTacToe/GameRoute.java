@@ -2,6 +2,7 @@ package Responses.TicTacToe;
 
 import Requests.Request;
 import Responses.Persistence.Games;
+import Responses.Persistence.TicTacToe;
 import Responses.Response;
 import Responses.Route;
 
@@ -9,9 +10,11 @@ import java.util.HashMap;
 
 public class GameRoute implements Route {
     Request request;
+    TicTacToe game;
 
     public GameRoute(Request request){
         this.request = request;
+        this.game = Games.games.get(0);
     }
 
     public Response respond(){
@@ -28,19 +31,25 @@ public class GameRoute implements Route {
     }
 
     public Response post(){
+        if(!game.isGameOver())
+            game.move(isolateLocation(request.body));
+        if(!game.isGameOver())
+            game.aiMove();
         return new Response(200, "", generateHeaders(), generateBody());
     }
 
     public String generateBody(){
-        if(request.method.equals("POST")){
-            Games.games.get(0).move(isolateLocation(request.body));
-            Games.games.get(0).aiMove();
-        }
+        String content;
 
-        String content = Games.games.get(0).board() + "<form action=\"/game\" method=\"post\">" +
-                "<input type=\"text\" name=\"location\">" +
-                "<button type=\"submit\">Play!</button>" +
-                "</form>";
+        if(game.isGameOver()){
+            content = game.board() + game.overMessage();
+        } else {
+            content = game.board() +
+                    "<form action=\"/game\" method=\"post\">" +
+                    "<input type=\"text\" name=\"location\">" +
+                    "<button type=\"submit\">Play!</button>" +
+                    "</form>";
+        }
 
         return content;
     }

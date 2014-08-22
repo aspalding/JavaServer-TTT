@@ -16,11 +16,11 @@ public class GameRouteTest extends TestCase {
                 "GET /game HTTP/1.1\r\n" +
                         "Host: localhost:4000\r\n" +
                         "Connection: keep-alive\r\n" +
-                        "Cache-Control: max-age=0\r\n\r\n"
+                        "Cache-Control: max-age=0\r\n\r\n" +
+                        "location=1"
         );
-
-        route = new GameRoute(request);
         Games.games.add(new TicTacToe());
+        route = new GameRoute(request);
     }
 
     public void testRespond() throws Exception {
@@ -36,7 +36,6 @@ public class GameRouteTest extends TestCase {
     }
 
     public void testGenerateBody() throws Exception {
-        System.out.println(route.generateBody());
         assert route.generateBody().length() > 1;
     }
 
