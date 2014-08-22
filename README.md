@@ -7,6 +7,6 @@ To execute tests run:
 To package and run:
 
     mvn package
-    java -jar jars/JavaServer.jar
+    jruby runner.rb
 
 Valid options include `-p <Port>` and `-d <Path>`.
