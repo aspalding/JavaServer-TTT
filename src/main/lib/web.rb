@@ -1,7 +1,7 @@
-require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/board.rb'
-require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/ai.rb'
-require_relative '/Users/andrew/Documents/JavaServer-TTT/src/main/lib/state.rb'
-
+require 'board'
+require 'ai'
+require 'state'
+require 'player_manager'
 
 class Web
   def initialize(board)
