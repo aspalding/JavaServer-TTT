@@ -1,6 +1,5 @@
 package Responses.Persistence;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jruby.embed.PathType;
 import org.jruby.embed.ScriptingContainer;
 
