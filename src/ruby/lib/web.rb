@@ -1,5 +1,5 @@
-require 'board'
 require 'ai'
+require 'board'
 require 'state'
 require 'player_manager'
 

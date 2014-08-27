@@ -1,6 +1,3 @@
-package Responses.Persistence;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jruby.embed.PathType;
 import org.jruby.embed.ScriptingContainer;
 
@@ -8,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicTacToe {
-    private final static String jrubyhome = "/src/main/lib/";
+    private final static String jrubyhome = "/src/ruby/lib/";
     private final static String filename = jrubyhome + "web.rb";
+    private final static String gemhome = System.getProperty("user.dir") +
+                                            "/target/rubygems/gems/rttt-0.1/lib";
 
     public ScriptingContainer container;
     public Object object;
@@ -18,7 +17,9 @@ public class TicTacToe {
         container = new ScriptingContainer();
         List<String> loadPaths = new ArrayList<String>();
         loadPaths.add(jrubyhome);
+        loadPaths.add(gemhome);
         container.setLoadPaths(loadPaths);
+
         object = container.runScriptlet(PathType.RELATIVE, filename);
     }
 

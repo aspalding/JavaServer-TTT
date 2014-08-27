@@ -1,8 +1,4 @@
-package Responses.TicTacToe;
-
 import Requests.Request;
-import Responses.Persistence.Games;
-import Responses.Persistence.TicTacToe;
 import Responses.Response;
 import Responses.Route;
 
@@ -18,12 +14,14 @@ public class GameRoute implements Route {
     }
 
     public Response respond(){
-        if(request.method.equals("GET"))
-            return get();
-        else if(request.method.equals("POST"))
-            return post();
-        else
-            return new Response(405, "Method Not Allowed", new HashMap<>(), "");
+        switch (request.method) {
+            case "GET":
+                return get();
+            case "POST":
+                return post();
+            default:
+                return new Response(405, "Method Not Allowed", new HashMap<>(), "");
+        }
     }
 
     public Response get(){

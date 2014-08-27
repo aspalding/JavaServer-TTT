@@ -1,8 +1,5 @@
-package Responses.TicTacToe;
 
 import Requests.Request;
-import Responses.Persistence.Games;
-import Responses.Persistence.TicTacToe;
 import junit.framework.TestCase;
 import org.junit.Before;
 

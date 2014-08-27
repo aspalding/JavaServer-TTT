@@ -1,7 +1,3 @@
-package Responses.Persistence;
-
-import Requests.Request;
-
 import java.util.LinkedList;
 
 public class Games {

@@ -1,5 +1,3 @@
-package Responses;
-
 import Requests.Request;
 import junit.framework.TestCase;
 
