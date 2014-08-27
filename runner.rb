@@ -1,7 +1,7 @@
 include Java
+require './assets/SimpleServer.jar'
 require './assets/TicTacServer.jar'
 
-#Java::Application.new.setUp(ARGV.to_java(:String))
-#Java::Application::runLoop
-
-Java::TicTacApp::run(ARGV.to_java(:String))
+Java::TicTacApp::initializeGames
+Java::Application.new.setUp(ARGV.to_java(:String))
+Java::Application::runLoop(Java::TicTacToeRouter.new)
