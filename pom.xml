@@ -57,7 +57,7 @@
                     <forceCreation>true</forceCreation>
                     <archive>
                         <manifest>
-                            <mainClass>Application</mainClass>
+                            <mainClass>TicTacApp</mainClass>
                         </manifest>
                     </archive>
                     <outputDirectory>assets</outputDirectory>
