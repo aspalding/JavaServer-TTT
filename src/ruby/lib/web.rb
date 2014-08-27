@@ -46,6 +46,10 @@ class Web
     end
   end
 
+  def valid?(loc)
+    @board.valid?(cast_int(loc))
+  end
+
 end
 
 Web.new(Board.new(3))

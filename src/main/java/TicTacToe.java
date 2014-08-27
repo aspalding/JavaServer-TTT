@@ -42,4 +42,9 @@ public class TicTacToe {
     public String overMessage(){
         return container.callMethod(object, "over_message", String.class);
     }
+
+    public boolean isValid(String location) {
+        return container.callMethod(object, "valid?", location, Boolean.class);
+    }
+
 }

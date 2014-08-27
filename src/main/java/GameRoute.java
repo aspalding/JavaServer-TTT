@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class GameRoute implements Route {
     Request request;
     TicTacToe game;
+    boolean valid;
 
     public GameRoute(Request request){
         this.request = request;
@@ -29,24 +30,29 @@ public class GameRoute implements Route {
     }
 
     public Response post(){
-        if(!game.isGameOver())
+        valid = game.isValid(isolateLocation(request.body));
+
+        if(!game.isGameOver() && valid)
             game.move(isolateLocation(request.body));
-        if(!game.isGameOver())
+        if(!game.isGameOver() && valid)
             game.aiMove();
+
         return new Response(200, "", generateHeaders(), generateBody());
     }
 
     public String generateBody(){
         String content;
+        String form = "<form action=\"/game\" method=\"post\">" +
+                "<input type=\"text\" name=\"location\">" +
+                "<button type=\"submit\">Play!</button>" +
+                "</form>";
 
-        if(game.isGameOver()){
+        if(game.isGameOver()) {
             content = game.board() + game.overMessage();
+        } else if(!valid) {
+            content = game.board() + "\nMove is not valid.\n" + form;
         } else {
-            content = game.board() +
-                    "<form action=\"/game\" method=\"post\">" +
-                    "<input type=\"text\" name=\"location\">" +
-                    "<button type=\"submit\">Play!</button>" +
-                    "</form>";
+            content = game.board() + form;
         }
 
         return content;
