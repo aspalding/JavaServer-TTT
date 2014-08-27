@@ -3,10 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>JavaServer</groupId>
-    <artifactId>JavaServer</artifactId>
+    <groupId>TicTacServer</groupId>
+    <artifactId>TicTacServer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <url>http://maven.apache.org</url>
+    <repositories>
+        <repository>
+            <id>rubygems-releases</id>
+            <url>http://rubygems-proxy.torquebox.org/releases</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -18,6 +24,19 @@
             <groupId>org.jruby</groupId>
             <artifactId>jruby-complete</artifactId>
             <version>1.7.13</version>
+        </dependency>
+        <dependency>
+            <groupId>SimpleServer</groupId>
+            <artifactId>SimpleServer</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/assets/SimpleServer.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>rttt</artifactId>
+            <version>0.1</version>
+            <type>gem</type>
         </dependency>
     </dependencies>
     <build>
@@ -41,9 +60,25 @@
                             <mainClass>Application</mainClass>
                         </manifest>
                     </archive>
-                    <outputDirectory>jars</outputDirectory>
-                    <finalName>JavaServer</finalName>
+                    <outputDirectory>assets</outputDirectory>
+                    <finalName>TicTacServer</finalName>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>de.saumya.mojo</groupId>
+                <artifactId>gem-maven-plugin</artifactId>
+                <version>1.0.5</version>
+                <configuration>
+                    <jrubyVersion>1.7.13</jrubyVersion>
+                    <includeRubygemsInResources>true</includeRubygemsInResources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>initialize</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,4 +1,5 @@
 include Java
-require './jars/JavaServer.jar'
+require './assets/SimpleServer.jar'
 
-Java::Application::runLoop(ARGV.to_java(:string));
+Java::Application.new.setUp(ARGV.to_java(:String))
+Java::Application::runLoop
