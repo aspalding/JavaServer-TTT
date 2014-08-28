@@ -50,6 +50,10 @@ class Web
     @board.valid?(cast_int(loc))
   end
 
+  def started?
+    (@state.empty_indices(@board.board).length == @board.board.length)? false : true 
+  end
+
 end
 
 Web.new(Board.new(3))

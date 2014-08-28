@@ -38,6 +38,7 @@ public class GameRouteTest extends TestCase {
 
     public void testGenerateHeaders() throws Exception {
         assert route.generateHeaders().get("Content-Type").equals("text/html");
+        assert route.generateHeaders().get("Set-Cookie").contains("index");
     }
 
     public void testIsolateLocation() {

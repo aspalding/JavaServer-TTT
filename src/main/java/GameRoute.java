@@ -49,7 +49,7 @@ public class GameRoute implements Route {
 
         if(game.isGameOver()) {
             content = game.board() + game.overMessage();
-        } else if(!valid) {
+        } else if(!valid && game.isStarted()) {
             content = game.board() + "\nMove is not valid.\n" + form;
         } else {
             content = game.board() + form;
@@ -59,11 +59,18 @@ public class GameRoute implements Route {
     }
 
     public HashMap<String, String> generateHeaders(){
-        return new HashMap<String, String>() {
+        HashMap<String, String> map = new HashMap<String, String>() {
             {
                 put("Content-Type", "text/html");
             }
         };
+
+        if(request.method.equals("GET")) {
+            map.put("Set-Cookie", "index=" + (Games.games.size() - 1));
+            Games.games.add(new TicTacToe());
+        }
+
+        return map;
     }
 
     public String isolateLocation(String parameter){

@@ -47,4 +47,7 @@ public class TicTacToe {
         return container.callMethod(object, "valid?", location, Boolean.class);
     }
 
+    public boolean isStarted() {
+        return container.callMethod(object, "started?", Boolean.class);
+    }
 }

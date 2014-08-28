@@ -15,11 +15,6 @@ describe Web do
     b.board[0].should eq("x") 
   end
   
-  #it "puts an ai move on the board" do
-  #  w.ai_move("o")
-  #  (b.board.include? "o").should eq(true)
-  #end
-  
   it "returns an invalid move if move cannot be cast" do 
     w.cast_int("a").should eq(-1)
   end
@@ -49,6 +44,11 @@ describe Web do
     board = Tss_board.new
     web = Web.new(board)
     web.over_message.should eq("It's a tie!")
+  end
+
+  it "returns true if a game is in progress" do
+    w.human_move("x", 0)
+    w.started?.should eq(true)
   end
   
 end
