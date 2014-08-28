@@ -44,4 +44,8 @@ public class GameRouteTest extends TestCase {
     public void testIsolateLocation() {
         assert route.isolateLocation("location=1").equals("1");
     }
+
+    public void testIsolateIndex() {
+        assertEquals(1, route.isolateIndex("textwrapon=false; wysiwyg=textarea; index=1"));
+    }
 }

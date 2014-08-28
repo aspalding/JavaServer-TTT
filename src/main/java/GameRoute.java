@@ -11,7 +11,7 @@ public class GameRoute implements Route {
 
     public GameRoute(Request request){
         this.request = request;
-        this.game = Games.games.get(0);
+        this.game = Games.games.get(Games.games.size() - 1);
     }
 
     public Response respond(){
@@ -75,5 +75,10 @@ public class GameRoute implements Route {
 
     public String isolateLocation(String parameter){
         return parameter.substring(9);
+    }
+
+    public int isolateIndex(String parameter){
+        int index = parameter.indexOf("index=") + 6;
+        return new Integer(parameter.substring(index));
     }
 }
